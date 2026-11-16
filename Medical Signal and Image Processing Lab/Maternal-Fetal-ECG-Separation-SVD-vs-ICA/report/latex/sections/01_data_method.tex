@@ -1,0 +1,37 @@
+\subsection*{Data convention and execution method}
+
+The sources of Part~1 are the files \texttt{dat1.mecg}, \texttt{dat1.fecg} and \texttt{dat1.noise}. Each file has 2560 samples, and the time axis is built from $t_n = n/256$. The files are numeric text; the actual name of the maternal file is \texttt{dat1.mecg}. The mixed signal of Part~1 is the sum of these three vectors. In the separation parts, the independent input \texttt{dat.X}, of size $2560\times 3$, is used; the Part~1 mixture is not necessarily one of the columns of this matrix.
+
+Throughout, $M = 2560$ is the number of samples and $N = 3$ is the number of channels. To stay consistent with the problem statement, $\mathbf{X}\in\mathbb{R}^{M\times N}$ and the centered matrix is defined as $\mathbf{X}_c = \mathbf{X} - \mathbf{1}\bm{\mu}^{T}$. The ICA algorithm received only $\mathbf{X}$. The file \texttt{dat2.fecg} is used after the separation, for evaluation only; the true mixing matrix and the true sources were not used in training the separator.
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}>{\ttfamily\raggedright}p{5.2cm}X@{}}
+\toprule
+\textnormal{\textbf{Function or tool}} & \textbf{Use in the report}\\
+\midrule
+numpy.loadtxt & Reading the numeric files\\
+Matplotlib \texttt{plot}/\texttt{scatter} & Time-domain plots and 3D scatter plots\\
+scipy.signal.welch & Power spectral density estimation\\
+\texttt{mean}/\texttt{var} (\texttt{ddof=1}) & Sample mean and sample variance\\
+scipy.stats.kurtosis, hist(density=True) & Kurtosis and density histograms\\
+numpy.linalg.svd (\texttt{full\_matrices=False}) & Economy-size SVD\\
+Matplotlib 3D lines and \texttt{stem} & Directions and singular-value spectrum\\
+ica\_jade.py & Component separation with JADE\\
+numpy.linalg.pinv & Matrix pseudoinverse\\
+\texttt{dot}, \texttt{norm}, \texttt{corrcoef} in NumPy & Angles, norms and correlation\\
+SVG / PNG / CSV / NPZ & Saving figures, tables and matrices\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+Figures are saved in PNG and SVG formats, numeric tables in CSV, and the matrices in the file \texttt{results\_all.npz}.
+
+\subsection*{Numerical checks and methodological notes}
+
+The computations were run with Python 3.14.0, NumPy 2.3.5, SciPy 1.18.0 and Matplotlib 3.11.2. The centered data have rank three. The relative error of the full reconstruction is about $4.63\times10^{-16}$ with SVD and about $7.92\times10^{-16}$ with ICA. This check confirms the consistency of the matrices; by itself it is not a measure of source-separation success.
+
+The mean of each channel was removed before the separation. In JADE, whitening is performed internally and fourth-order information is then used to find the separating rotation. No band-pass filter or other adaptive removal was added to the main pipeline, so the two methods are compared with identical preprocessing.
+
+\paragraph{SVD.} If $\mathbf{X}_c = \mathbf{U}\bm{\Sigma}\mathbf{V}^{T}$, the columns of $\mathbf{V}$ are the eigenvectors of $\mathbf{X}_c^{T}\mathbf{X}_c$, and the columns of $\mathbf{U}$ are the eigenvectors of $\mathbf{X}_c\mathbf{X}_c^{T}$. This distinction matters: attributing $\mathbf{V}$ to $\mathbf{Y}^{T}\mathbf{Y}$ in the exercise text is not correct for the $N\times M$ dimension convention. The PCA scores are equal to $\mathbf{U}\bm{\Sigma}$; the columns of $\mathbf{U}$ are also plotted separately, as the exercise requests.
+
+\paragraph{Component selection.} In SVD, the third component was chosen by inspecting the component shapes for this particular dataset, and the choice can be changed on the command line. In ICA, the maternal and fetal labels were assigned by a simple rule specific to this simulated data: the two components with kurtosis above four, at least four peaks, and a coefficient of variation of the peak interval below 0.35 are selected, and the faster of the two is named fetal. This rule is not a general labeler for arbitrary ECG recordings. In real applications as well, component selection and quality assessment are steps independent of the separation itself.

@@ -1,0 +1,17 @@
+\section*{Experiment 3: Maternal and Fetal ECG Separation}
+
+\begin{keyresult}[title={Main result for this dataset}]
+\centering
+\begin{tabular}{@{}lcc@{}}
+\toprule
+\textbf{Method} & \textbf{Absolute correlation with reference} & \textbf{Normalized error after scale fitting}\\
+\midrule
+SVD      & 0.674948 & 0.737866\\
+ICA/JADE & 0.997840 & 0.065684\\
+\bottomrule
+\end{tabular}
+
+\vspace{0.6em}
+\raggedright
+In this dataset, ICA recovered the fetal waveform better. The error values are computed after an explicit scale fit against the reference; this fit plays no role in training the separator.
+\end{keyresult}
