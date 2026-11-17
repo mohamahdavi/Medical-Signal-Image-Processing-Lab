@@ -1,0 +1,13 @@
+\section{Conclusions and Limitations}
+
+In the simulation part, CoM2 together with the selection of the spiky sources reduced the error relative to the initial observation. At $-5$~dB, both the RRMSE and the temporal shape of the events showed a considerable improvement. At $-15$~dB, despite an SNR improvement of about 8.62~dB, the absolute output error remained large and some spikes were not recovered correctly. The result of this case should therefore be recorded as a limitation of the method and of the source selection, not as a complete cleaning success.
+
+In the real data, an attenuation of the 60~Hz interference in NewData1 and a reduction of the frontal transients and of the T4 contamination in NewData3 were observed. The lack of a clean reference, the shortness of the recordings and the ambiguity of the origin of some components limit the scope of the conclusions. The measures of power, RMS, removed energy and correlation only describe the changes. Keeping the ambiguous components is consistent with the conservative principle of the course notes \rc{2}.
+
+For a subsequent evaluation, a longer recording, an EOG or ECG reference, expert review and a sensitivity test of the component selection can be useful. Examining other ICA algorithms or auxiliary classifiers such as ICLabel is also a path for further development, but there is no result from running them in this experiment \rc{5}. The accuracy of epilepsy detection, the sensitivity of spike detection and the preservation of ERPs were not measured.
+
+\subsection*{Reproduction and checking of the computations}
+
+The code was run with MATLAB R2025b and the Signal Processing Toolbox. The file \texttt{START\_HW2} starts the complete run, and the results, matrices, decision table and figures are saved in the \texttt{results} folder. In the main run, 33 figures were produced in PNG and FIG formats, and 352 checks of numerical consistency and of the existence of the outputs were carried out successfully. The figures of this report were redrawn from the same numerical outputs, with the dimensions adjusted for printing; the data or the selection of the components were not changed in preparing the report.
+
+These checks include the applied SNR, the reconstruction with all components, the mapping of the selected components, the consistency of the tables and the finiteness of the data. Passing them is not a guarantee of the correct identification of all artifacts or of the biological independence of the components. The residual of the full reconstruction in the two real recordings was approximately $1.52\times10^{-15}$ and $1.03\times10^{-15}$.

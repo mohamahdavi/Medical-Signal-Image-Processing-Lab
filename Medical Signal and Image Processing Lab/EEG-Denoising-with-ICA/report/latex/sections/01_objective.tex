@@ -1,0 +1,17 @@
+\section{Objective and Background of the Experiment}
+
+The objective is to answer two different problems posed in the exercise: recovering spiky sources from a simulated observation, and removing components with artifactual evidence from real EEG. In the first case a clean reference is available and the error can be measured; in the second, the decisions rely on indirect evidence and on the principle of keeping ambiguous components. The criterion for selecting components was therefore not taken to be the same in these two parts \rc{1, 2}.
+
+\subsection*{Mixing model and the role of ICA}
+\begin{equation}
+x(t)=A\,s(t)+n(t)
+\end{equation}
+In this model, the observation vector $x$ is the result of a linear combination of the sources $s$ with the matrix $A$, plus a noise term $n$. In the ICA approximation, the contribution of the separable sources is modeled in the part $As$; the CoM2 method uses fourth-order statistics to find approximately independent components. Statistical independence is not the same as physiological cleanliness, and each component must be examined separately. The order, sign and scale of the sources are also inherently ambiguous, and a component number in two different runs does not necessarily refer to one source \rc{3}.
+
+EEG artifacts can have an ocular, muscular, cardiac or non-physiological origin, such as equipment interference and electrode movement. In epileptic data, sharpness or a high kurtosis alone is not a reason for a component to be undesirable; removal without sufficient evidence can destroy the desired event. For this reason, ambiguous components were kept in the real data \rc{2}.
+
+\subsection*{Choice of algorithm}
+
+The only algorithm of this experiment is CoM2, in the implementation accompanying the exercise, COM2R. This code first performs whitening and the determination of the data subspace with SVD, and then pursues the separation, based on fourth-order statistics, with pairwise rotations. The first output is the mixing matrix $A$, and the second output, $W$, equals the pseudoinverse of $A$. The code runs with a fixed number of sweeps: 7 sweeps for 32 channels and 6 sweeps for 21 channels; a stopping rule based on a convergence threshold is not defined in this implementation \rc{3, COM2R code}.
+
+FastICA, Infomax, JADE and SOBI are other theoretical options, but in the present results they were neither run nor compared with COM2R. Component classifiers such as ICLabel were also not used in this experiment; the labels or probabilities that such tools generate are therefore not attributed to the results.

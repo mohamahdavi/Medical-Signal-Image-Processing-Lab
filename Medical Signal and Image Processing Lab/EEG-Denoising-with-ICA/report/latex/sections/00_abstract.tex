@@ -1,0 +1,10 @@
+\section*{Abstract and Reading Guide}
+\addcontentsline{toc}{section}{Abstract and Reading Guide}
+
+In this experiment, the removal of EEG noise and artifacts with independent component decomposition was examined. In the simulation part, the desired 32-channel signal was combined with the supplied noise at SNRs of $-5$ and $-15$ decibels. The COM2R algorithm was then run, and the sources with spiky characteristics were selected for reconstruction. The RRMSE decreased from 1.778 to 0.715 and from 5.623 to 2.084. The second result, despite the improvement relative to the input, still has a large error; it shows that noise reduction is not necessarily accompanied by complete preservation of the spikes.
+
+In the real-data part, two recordings, NewData1 and NewData3, were examined. In the first recording, a component with narrow-band interference near 60~Hz was removed; in the second, a component with a probable eye-blink pattern and a component with localized high-frequency contamination were removed. The decisions were based on the simultaneous examination of the time course, the spectrum and the spatial pattern. Because there is no clean reference for the real data, the before-and-after indices are purely descriptive and are not interpreted as reconstruction accuracy.
+
+\bigskip
+\tableofcontents
+\clearpage

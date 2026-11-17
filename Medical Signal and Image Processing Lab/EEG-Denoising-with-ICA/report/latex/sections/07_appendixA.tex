@@ -1,0 +1,46 @@
+\clearpage
+\section*{Appendix A: Key Code and Organization of the Run}
+\addcontentsline{toc}{section}{Appendix A: Key Code and Organization of the Run}
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}>{\ttfamily}l>{\raggedright\arraybackslash}X@{}}
+\toprule
+\textnormal{\textbf{File}} & \textbf{Role}\\
+\midrule
+START\_HW2.m & Running the complete computations and checking the outputs\\
+prepare\_hw2.m & Loading, building the observation, mean removal and running COM2R\\
+hw2\_features.m & PSD and the temporal and spatial features\\
+run\_hw2.m & Component selection, reconstruction, computing the metrics and drawing the figures\\
+hw2\_topomap.m & Polar electrode map with the color of the true weight\\
+validate\_hw2.m & Independent check of the numerical consistency and of the output files\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection*{Core code of the simulation}
+
+\begin{lstlisting}[language=Matlab]
+sigma = norm(X_org,'fro')/norm(X_noise,'fro') ...
+        * 10^(-targetSNR/20);
+X = X_org + sigma*X_noise;
+channelMean = mean(X,2);
+Xc = X-channelMean;
+[A,W,sweeps] = COM2R(Xc,size(X,1));
+S = W*Xc;
+% The actual implementation obtains these from hw2_features.
+SelSources = find(excessKurtosis >= 6 & peakZ >= 6 & HF <= .20);
+X_den = A(:,SelSources)*S(SelSources,:) + channelMean;
+RRMSE = norm(X_org-X_den,'fro')/norm(X_org,'fro');
+SNRout = -20*log10(RRMSE);
+\end{lstlisting}
+
+\subsection*{Computing the PSD and reconstructing the real data}
+
+\begin{lstlisting}[language=Matlab]
+[P,f] = pwelch((S-mean(S,2))',hamming(500),250,1024,250);
+RejectedSources = [1 8]; % NewData3 only
+SelSources = setdiff(1:size(S,1),RejectedSources);
+X_den = A(:,SelSources)*S(SelSources,:) + channelMean;
+\end{lstlisting}
+
+The component numbers are valid only for the current data and the current method. After a change of the preprocessing, the rank or the version of the algorithm, the selections must be reviewed again. For a complete rerun, \texttt{START\_HW2} is executed; using the stored ICA results is appropriate only when the data and the decomposition settings have not changed.

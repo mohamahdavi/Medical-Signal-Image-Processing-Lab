@@ -1,0 +1,164 @@
+\clearpage
+\section*{Appendix B: Component Decision Table}
+\addcontentsline{toc}{section}{Appendix B: Component Decision Table}
+
+In the real-data tables, ``Keep'' means that there is not sufficient evidence for removal; it does not prove the cleanliness or the brain origin of the component. HF and LF are ratios; to convert them to percentages they must be multiplied by one hundred. The numbers were taken from the same CSV files of the final run.
+
+\subsection*{Decisions of NewData1}
+\begin{center}
+\small
+\begin{longtable}{@{}cccccp{6.4cm}@{}}
+\toprule
+\textbf{IC} & \textbf{HF} & \textbf{LF} & $\kappa$ & \textbf{Decision} & \textbf{Evidence and consideration}\\
+\midrule
+\endhead
+1 & 0.061 & 0.346 & 2.56 & Keep & Low HF and non-intense spatial concentration\\
+2 & 0.061 & 0.433 & 3.19 & Keep & Slowness without a specific ocular pattern\\
+3 & 0.023 & 0.349 & 1.90 & Keep & Frontal location alone is not sufficient\\
+4 & 0.768 & 0.057 & -0.82 & \textcolor{accent}{\textbf{Remove}} & Continuous oscillation and a narrow peak near 60~Hz\\
+5 & 0.043 & 0.336 & 7.06 & Keep & Sharp transient with low HF\\
+6 & 0.054 & 0.473 & -0.50 & Keep & Relative slowness without sufficient evidence for removal\\
+7 & 0.070 & 0.114 & 8.41 & Keep & Probably ECG-like; kept for review\\
+8 & 0.041 & 0.473 & -0.46 & Keep & Low power and a relatively diffuse map\\
+9 & 0.043 & 0.499 & -0.60 & Keep & Slowness alone is not a criterion for removal\\
+10 & 0.050 & 0.457 & -0.18 & Keep & Low HF and a diffuse map\\
+11 & 0.033 & 0.397 & -0.28 & Keep & Frontal share without sufficient temporal evidence\\
+12 & 0.115 & 0.546 & 4.01 & Keep & Slowness with a low frontal share\\
+13 & 0.115 & 0.358 & 5.10 & Keep & A sharp transient alone is not sufficient\\
+14 & 0.058 & 0.328 & -0.68 & Keep & Low HF and no specific evidence\\
+15 & 0.036 & 0.326 & 8.66 & Keep & High kurtosis with a very low HF\\
+16 & 0.051 & 0.295 & 2.83 & Keep & Moderate concentration without complementary evidence\\
+17 & 0.036 & 0.372 & 5.72 & Keep & Frontal propagation without a specific pattern\\
+18 & 0.077 & 0.387 & 3.49 & Keep & Moderate concentration and low HF\\
+19 & 0.045 & 0.265 & 1.75 & Keep & Frontal location alone is not a reason for an artifact\\
+20 & 0.086 & 0.359 & 5.34 & Keep & Sharp transient with low HF\\
+21 & 0.133 & 0.278 & 1.23 & Keep & No resemblance to a clear narrow-band interference\\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\clearpage
+\subsection*{Decisions of NewData3}
+\begin{center}
+\small
+\begin{longtable}{@{}cccccp{6.4cm}@{}}
+\toprule
+\textbf{IC} & \textbf{HF} & \textbf{LF} & $\kappa$ & \textbf{Decision} & \textbf{Evidence and consideration}\\
+\midrule
+\endhead
+1 & 0.042 & 0.816 & 7.04 & \textcolor{accent}{\textbf{Remove}} & Three slow transients and bilateral frontal propagation\\
+2 & 0.226 & 0.286 & -0.43 & Keep & Moderate HF and a diffuse map\\
+3 & 0.214 & 0.367 & 9.76 & Keep & Early transient of ambiguous origin\\
+4 & 0.120 & 0.256 & 2.30 & Keep & Peak at about 12~Hz; no specific evidence\\
+5 & 0.360 & 0.228 & -0.32 & Keep & Possible mixing; evidence for removal is not sufficient\\
+6 & 0.118 & 0.245 & 5.03 & Keep & Sharp transient with low HF\\
+7 & 0.140 & 0.492 & 2.12 & Keep & Moderate slowness without specific evidence\\
+8 & 0.805 & 0.010 & 3.48 & \textcolor{accent}{\textbf{Remove}} & Broad HF and a very intense concentration in T4\\
+9 & 0.124 & 0.273 & -0.38 & Keep & Low HF and a non-intense concentration\\
+10 & 0.078 & 0.291 & 5.37 & Keep & Sharp event with low HF\\
+11 & 0.153 & 0.377 & 1.80 & Keep & Frontal share alone is not sufficient\\
+12 & 0.077 & 0.506 & -0.78 & Keep & Frontal slowness without a clear blink pattern\\
+13 & 0.105 & 0.315 & 4.55 & Keep & Sharp transient without sufficient evidence for removal\\
+14 & 0.395 & 0.238 & -0.17 & Keep & Higher HF; probable and ambiguous mixing\\
+15 & 0.255 & 0.269 & -0.44 & Keep & Moderate HF and a diffuse map\\
+16 & 0.310 & 0.176 & 1.08 & Keep & Possible mixing; no very intense concentration\\
+17 & 0.259 & 0.237 & -0.37 & Keep & Moderate HF without independent evidence\\
+18 & 0.185 & 0.483 & 2.06 & Keep & Slowness without a clear blink pattern\\
+19 & 0.160 & 0.209 & 2.38 & Keep & No specific evidence for removal\\
+20 & 0.436 & 0.158 & 2.25 & Keep & Higher HF; kept for review\\
+21 & 0.619 & 0.139 & 2.53 & Keep & High HF but ambiguous origin; review needed\\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\clearpage
+\subsection*{Decision on the simulation sources at an SNR of $-5$~dB}
+A component was kept only when all three conditions on the excess kurtosis, PeakZ and HF hold. This instructional decision must be interpreted together with the temporal and spectral shape and the output error.
+\begin{center}
+\small
+\begin{longtable}{@{}ccccc@{}}
+\toprule
+\textbf{IC} & \textbf{Excess kurtosis} & \textbf{PeakZ} & \textbf{HF} & \textbf{Decision}\\
+\midrule
+\endhead
+1 & 2.14 & 5.93 & 0.711 & \textcolor{accent}{\textbf{Remove}}\\
+2 & 14.69 & 6.73 & 0.025 & Keep\\
+3 & 8.53 & 7.87 & 0.746 & \textcolor{accent}{\textbf{Remove}}\\
+4 & 2.94 & 6.65 & 0.774 & \textcolor{accent}{\textbf{Remove}}\\
+5 & 18.78 & 9.49 & 0.070 & Keep\\
+6 & 109.57 & 26.55 & 0.778 & \textcolor{accent}{\textbf{Remove}}\\
+7 & 5.57 & 8.47 & 0.707 & \textcolor{accent}{\textbf{Remove}}\\
+8 & 8.25 & 8.51 & 0.857 & \textcolor{accent}{\textbf{Remove}}\\
+9 & 69.14 & 12.93 & 0.044 & Keep\\
+10 & 8.96 & 8.81 & 0.155 & Keep\\
+11 & 3.68 & 6.46 & 0.175 & \textcolor{accent}{\textbf{Remove}}\\
+12 & 24.95 & 12.17 & 0.065 & Keep\\
+13 & 4.37 & 7.44 & 0.738 & \textcolor{accent}{\textbf{Remove}}\\
+14 & 4.10 & 10.07 & 0.428 & \textcolor{accent}{\textbf{Remove}}\\
+15 & 1.89 & 6.77 & 0.196 & \textcolor{accent}{\textbf{Remove}}\\
+16 & 41.08 & 13.83 & 0.807 & \textcolor{accent}{\textbf{Remove}}\\
+17 & 59.24 & 18.87 & 0.771 & \textcolor{accent}{\textbf{Remove}}\\
+18 & 1.12 & 4.95 & 0.153 & \textcolor{accent}{\textbf{Remove}}\\
+19 & 20.41 & 13.51 & 0.456 & \textcolor{accent}{\textbf{Remove}}\\
+20 & 3.64 & 7.47 & 0.695 & \textcolor{accent}{\textbf{Remove}}\\
+21 & 18.33 & 9.78 & 0.087 & Keep\\
+22 & 5.34 & 7.89 & 0.443 & \textcolor{accent}{\textbf{Remove}}\\
+23 & 14.05 & 9.45 & 0.114 & Keep\\
+24 & 18.87 & 11.26 & 0.763 & \textcolor{accent}{\textbf{Remove}}\\
+25 & 1.13 & 6.43 & 0.128 & \textcolor{accent}{\textbf{Remove}}\\
+26 & 3.26 & 7.23 & 0.196 & \textcolor{accent}{\textbf{Remove}}\\
+27 & 32.01 & 19.15 & 0.581 & \textcolor{accent}{\textbf{Remove}}\\
+28 & 28.50 & 15.74 & 0.442 & \textcolor{accent}{\textbf{Remove}}\\
+29 & 7.20 & 9.89 & 0.410 & \textcolor{accent}{\textbf{Remove}}\\
+30 & 37.82 & 19.85 & 0.560 & \textcolor{accent}{\textbf{Remove}}\\
+31 & 0.19 & 5.01 & 0.159 & \textcolor{accent}{\textbf{Remove}}\\
+32 & 14.08 & 9.70 & 0.146 & Keep\\
+\bottomrule
+\end{longtable}
+\end{center}
+
+\clearpage
+\subsection*{Decision on the simulation sources at an SNR of $-15$~dB}
+A component was kept only when all three conditions on the excess kurtosis, PeakZ and HF hold. This instructional decision must be interpreted together with the temporal and spectral shape and the output error.
+\begin{center}
+\small
+\begin{longtable}{@{}ccccc@{}}
+\toprule
+\textbf{IC} & \textbf{Excess kurtosis} & \textbf{PeakZ} & \textbf{HF} & \textbf{Decision}\\
+\midrule
+\endhead
+1 & 2.21 & 5.83 & 0.726 & \textcolor{accent}{\textbf{Remove}}\\
+2 & 9.14 & 7.62 & 0.748 & \textcolor{accent}{\textbf{Remove}}\\
+3 & 2.94 & 6.72 & 0.777 & \textcolor{accent}{\textbf{Remove}}\\
+4 & 110.85 & 26.41 & 0.785 & \textcolor{accent}{\textbf{Remove}}\\
+5 & 8.14 & 8.40 & 0.859 & \textcolor{accent}{\textbf{Remove}}\\
+6 & 5.48 & 8.06 & 0.713 & \textcolor{accent}{\textbf{Remove}}\\
+7 & 72.51 & 13.10 & 0.043 & Keep\\
+8 & 10.44 & 9.18 & 0.167 & Keep\\
+9 & 4.18 & 6.27 & 0.167 & \textcolor{accent}{\textbf{Remove}}\\
+10 & 4.62 & 10.34 & 0.414 & \textcolor{accent}{\textbf{Remove}}\\
+11 & 4.29 & 7.01 & 0.744 & \textcolor{accent}{\textbf{Remove}}\\
+12 & 40.80 & 14.05 & 0.806 & \textcolor{accent}{\textbf{Remove}}\\
+13 & 20.73 & 13.73 & 0.458 & \textcolor{accent}{\textbf{Remove}}\\
+14 & 60.30 & 19.67 & 0.772 & \textcolor{accent}{\textbf{Remove}}\\
+15 & 2.77 & 5.14 & 0.149 & \textcolor{accent}{\textbf{Remove}}\\
+16 & 5.33 & 7.71 & 0.461 & \textcolor{accent}{\textbf{Remove}}\\
+17 & 3.52 & 7.22 & 0.692 & \textcolor{accent}{\textbf{Remove}}\\
+18 & 19.56 & 10.10 & 0.083 & Keep\\
+19 & 6.41 & 8.88 & 0.256 & \textcolor{accent}{\textbf{Remove}}\\
+20 & 14.00 & 9.45 & 0.115 & Keep\\
+21 & 19.90 & 11.91 & 0.746 & \textcolor{accent}{\textbf{Remove}}\\
+22 & 1.23 & 6.51 & 0.154 & \textcolor{accent}{\textbf{Remove}}\\
+23 & 13.35 & 13.28 & 0.576 & \textcolor{accent}{\textbf{Remove}}\\
+24 & 0.18 & 3.91 & 0.121 & \textcolor{accent}{\textbf{Remove}}\\
+25 & 4.72 & 7.56 & 0.198 & \textcolor{accent}{\textbf{Remove}}\\
+26 & 1.49 & 7.88 & 0.236 & \textcolor{accent}{\textbf{Remove}}\\
+27 & 50.90 & 22.58 & 0.689 & \textcolor{accent}{\textbf{Remove}}\\
+28 & 0.99 & 5.50 & 0.222 & \textcolor{accent}{\textbf{Remove}}\\
+29 & 36.42 & 20.01 & 0.564 & \textcolor{accent}{\textbf{Remove}}\\
+30 & 13.17 & 9.81 & 0.089 & Keep\\
+31 & 43.10 & 16.66 & 0.433 & \textcolor{accent}{\textbf{Remove}}\\
+32 & 13.96 & 9.73 & 0.150 & Keep\\
+\bottomrule
+\end{longtable}
+\end{center}

@@ -1,0 +1,35 @@
+\section{Data and Method of Execution}
+
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Set} & \textbf{Matrix size} & \textbf{Sampling rate} & \textbf{Last value of the time axis}\\
+\midrule
+\texttt{X\_org} and \texttt{X\_noise} & $32\times10240$ & 250 Hz & 40.956 s\\
+NewData1 & $21\times1251$ & 250 Hz & 5.000 s\\
+NewData3 & $21\times1251$ & 250 Hz & 5.000 s\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+In the simulation, the sampling rate was taken from the file \texttt{plotEEG} accompanying the data, and in the real-data part from the exercise. The time axis was built with $t=(0{:}N{-}1)/f_s$; for example, $N/f_s$ in the simulation is 40.96 seconds, but the last sample on the axis lies at 40.956 seconds. Since amplitude calibration specifications are not available in the data, the unit of the plots is given as a.u.\ and microvolts are not assumed.
+
+\subsection*{Mean removal and rank}
+\begin{equation}
+X_c = X-\mu\mathbf{1}^{T};\qquad S=WX_c;\qquad W=A^{+}
+\end{equation}
+Before ICA, only the mean of each channel was removed from the same observation. A band-pass filter, notch filter, channel removal, change of reference and standardization of the channels were not applied. The numerical rank of the mean-removed data was examined with SVD and was 32 for the simulation and 21 for each real recording. After the reconstruction, the mean of the observation was added back. The frequency bands mentioned below serve only for feature extraction and do not mean filtering the data in those bands.
+
+\subsection*{Spectrum estimation and features}
+
+The PSD was computed with \texttt{pwelch}, using a Hamming window of 500 samples (equal to 2 seconds), an overlap of 250 samples and an NFFT of 1024. The spacing of the points of the frequency grid is about 0.244~Hz; this spacing results from the zero-padded grid and must not be regarded as an independent spectral resolution. The effective resolution also depends on the length and shape of the window \rc{4}.
+\begin{equation}
+\mathrm{HF}=\frac{\int_{30}^{100}P(f)\,df}{\int_{0.5}^{100}P(f)\,df};\qquad
+\mathrm{LF}=\frac{\int_{0.5}^{4}P(f)\,df}{\int_{0.5}^{100}P(f)\,df}
+\end{equation}
+HF and LF are the ratios of the power of the band of interest to the power in 0.5 to 100~Hz. The Line60 index likewise describes the share of the power in 59 to 61~Hz with the same denominator. The excess kurtosis, the maximum absolute normalized $z$, the squared-weight share of the map in the frontal channels, the concentration of the maximum of the map and the correlation of adjacent samples were computed as descriptive evidence; these indices are not valid probabilities of artifact detection.
+
+For each component, $z$ is obtained by subtracting the temporal mean of that component and dividing by its root mean square after the mean removal; this normalization is used only in feature extraction.
+\begin{equation}
+\kappa=E[z^{4}]-3
+\end{equation}
