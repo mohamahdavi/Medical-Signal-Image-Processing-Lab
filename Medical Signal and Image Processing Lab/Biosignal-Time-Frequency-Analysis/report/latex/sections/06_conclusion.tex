@@ -1,0 +1,13 @@
+\section{Conclusions and Reproducing the Experiment}
+
+In the brain signal, the change in morphology was accompanied by a change in the spectral distribution, and the time--frequency analysis revealed the temporal location of these changes. Reducing the sampling rate after anti-aliasing filtering preserved the main band with a small difference and, at the same time, removed part of the fast power of the recording. In the cardiac signal, the two leads had common timing and different shapes, and separating the non-beat events from the real beats was essential for computing the intervals correctly. The eye data were mainly low-frequency and the muscle data contained faster transients; however, the physiological interpretation of both depended on the recording arrangement and on the limitations of the data.
+
+All parts were run in MATLAB R2025b with the Signal Processing Toolbox. For reproduction, enter the folder of this report and run the command \texttt{run\_lab1}. The required data are in the \texttt{data} subfolder accompanying the package. By giving the path of the data to the function, using the original folder \texttt{Lab1\_data} is also possible. The code performs reading the data, checking the dimensions, computing the correct axes, building the plots and saving the tables. The output of a successful run is recorded in \texttt{results/run\_matlab.log}.
+
+\begin{lstlisting}[language=Matlab]
+results = run_lab1;
+% Or:
+results = run_lab1('C:\path\to\Lab 1_data');
+\end{lstlisting}
+
+The complete code is not repeated in the text of the report; only the decisive parts are given, with a statement of their purpose. The CSV and JSON files hold the exact numbers, the MAT files hold the results that can be loaded, and the PNG images hold the figures. The independent appendix of cardiac labels makes it possible to examine all the beats.

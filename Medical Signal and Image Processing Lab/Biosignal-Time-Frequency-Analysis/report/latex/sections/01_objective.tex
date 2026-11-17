@@ -1,0 +1,42 @@
+\section{Objective and Analysis Method}
+
+The aim of this experiment is to examine the relation between the temporal shape of vital signals and their frequency content, and how this content changes over time. With real data, we examine the brain signal before and during seizure activity, the cardiac signal with different kinds of beats, eye movements, and healthy and diseased muscle activity. For each part, we interpret the time-domain display, the Fourier transform and the spectrogram together, because a single overall spectrum does not specify when events occur.
+
+\subsection{Data and Physical Axes}
+
+The data were read from the four files that accompany the exercise statement. For all signals, the time axis was built from the number of samples and the sampling frequency. In time slicing, the beginning of an interval is included and its end is excluded; a five-second interval therefore contains exactly five times the sampling rate in samples. The original data of none of the parts were rewritten.
+
+\begin{center}
+\begin{tabular}{@{}lccc@{}}
+\toprule
+\textbf{Data} & \textbf{Sampling rate (Hz)} & \textbf{Channels} & \textbf{Duration (s)}\\
+\midrule
+EEG & 256  & 32 & 64\\
+ECG & 360  & 2  & 1805.556\\
+EOG & 128  & 2  & 60\\
+EMG & 4000 & $1\times3$ & 12.715\ /\ 27.584\ /\ 36.965\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The EMG durations in the table are given in the order healthy, myopathy, neuropathy. The \texttt{TIME} vector in the ECG file has 720000 values, whereas the signal matrix has 650000 rows; this vector was therefore set aside and the correct time axis was reconstructed. For amplitudes that have no calibration factor in the exercise file, the recorded unit or a.u.\ (arbitrary units) is used. The general physiological amplitude range given in the course notes does not, on its own, determine the conversion factor of these files to volts.
+
+\subsection{Fourier Transform and Power Spectral Density}
+
+For a signal with $N$ samples, the frequency axis and the Fourier transform are defined as
+\begin{equation}
+X[k]=\sum_{n=0}^{N-1}x[n]\,e^{-j2\pi kn/N},\qquad
+f_k=\frac{k f_s}{N},\qquad
+t_n=\frac{n}{f_s}.
+\label{eq:dft}
+\end{equation}
+The one-sided amplitude spectrum was built from the absolute value of the FFT divided by $N$. The amplitude of the interior points is doubled, but the DC and Nyquist points are not. The unit of this spectrum is the same as that of the signal amplitude. The power spectral density (PSD) is a different quantity, with units of squared amplitude per hertz. Welch's method reduces the fluctuation of the spectral estimate by averaging the spectra of overlapping windows. To compare the structure of the oscillations, the mean of each segment was removed before spectral analysis; the time-domain plots show the raw data.
+
+\subsection{Time--Frequency Analysis}
+
+\begin{equation}
+\mathrm{STFT}(m,k)=\sum_{n}x[n]\,w[n-mH]\,e^{-j2\pi kn/N_{\mathrm{FFT}}},\qquad
+H=L-N_{\mathrm{overlap}}.
+\label{eq:stft}
+\end{equation}
+The spectrogram is drawn from the power of the short-time transform. A longer window improves the frequency resolution and weakens the time localization. Zero-padding only makes the frequency display grid finer; it does not create new information or any real additional resolution. To compare spectrograms, the same color scale is used within each set.
