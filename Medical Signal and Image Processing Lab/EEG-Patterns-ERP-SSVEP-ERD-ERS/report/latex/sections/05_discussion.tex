@@ -1,0 +1,19 @@
+\section{Discussion and Conclusions}
+
+\subsection*{Fit of the processing method to the type of response}
+
+The three parts show that the type of time-locking of the response determines the choice of the processing method. For the ERP, synchronous averaging of the voltage is useful; in the SSVEP, the frequency pattern and the harmonics carry the information about the target; and in ERD/ERS, the averaging must be done after computing the power. Treating these three methods as the same can hide an important part of the response.
+
+\subsection*{Main results}
+
+In the first part, the shape of the response became more stable as the number of repetitions increased. The average of the first 1200 repetitions had an RMS difference of 0.1660 and a correlation of 0.9872 relative to the overall average. Given the dependence of $N_0$ on the threshold, a suitable report of the result states the value together with the definition of the stability criterion.
+
+In the second part, both the PSD at the permitted candidates and CCA gave fifteen correct answers. The presence of a dominant second harmonic in eight repetitions showed that detecting the stimulus from the absolute maximum of a spectrum is not sufficient. The label of each repetition was used only after the prediction, for evaluation; the set of the permitted frequencies of the system was assumed known.
+
+In the third part, the patterns of power change of the five tasks at CPz were different. Word generation showed a stronger decrease in alpha and beta, and navigation showed a stronger decrease in theta. The transient increase of foot imagery also showed that analyzing the temporal trend provides more information than a single average number.
+
+\subsection*{Limitations and reproducibility}
+
+The overall ERP average is not a noise-free or independent reference, and it overlaps with the subsets. The SSVEP accuracy was obtained from only fifteen repetitions of one person. In ERD/ERS, no statistical test or classifier was run with independent test data. The present results should therefore be interpreted as a descriptive analysis of these same data.
+
+All analyses were run with Python. The random selection seed is 42. The independent files \texttt{part1\_erp.py}, \texttt{part2\_ssvep.py} and \texttt{part3\_erd\_ers.py} have a Persian comment on every line; the parameters, the CSV results and the NPZ tensors were saved in the solution package. Direct checks of the averages, the slice indices, Welch's method, the tensor dimensions and the CPz convolution matched the saved outputs.

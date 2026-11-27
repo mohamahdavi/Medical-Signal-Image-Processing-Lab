@@ -1,0 +1,20 @@
+\section{Theoretical Foundations}
+
+\subsection*{Event-related potential and P300}
+
+An ERP is a voltage change related to an event, aligned relative to the moment of the stimulus. P300 is one of the positive components of the ERP and is usually seen a few hundred milliseconds after the detection of a target stimulus. The letter P refers to the positive polarity and the number 300 to the approximate latency; the peak time depends on the person and the task. For example, in an oddball task, a rarely occurring target stimulus is presented among frequent standard stimuli, and the person counts or detects it.
+
+If the recording of repetition $i$ equals a constant response $s$ plus a variable background $n$, synchronous averaging preserves the aligned component. Under the assumption of zero-mean noise that is uncorrelated between repetitions, the standard deviation of the average noise is inversely proportional to the square root of the number of repetitions. This method does not increase the true amplitude of the response; it improves the ratio of the constant response to the variable background.
+\begin{equation}
+x_i[k]=s[k]+n_i[k];\qquad
+M_N[k]=\frac{1}{N}\sum_{i=1}^{N}x_i[k];\qquad
+\sigma_{\text{mean noise}}=\frac{\sigma}{\sqrt{N}}
+\end{equation}
+
+\subsection*{Steady-state visual response}
+
+In periodic visual stimulation, the EEG activity can increase at the stimulation frequency and at its integer multiples. Therefore, to detect an SSVEP, the fundamental frequency and the harmonics must be examined together; the highest peak is not necessarily the fundamental frequency. The responses of multiple channels are also not identical, owing to differences in electrode location and in the combination of sources.
+
+\subsection*{Event-related power change}
+
+ERP changes are locked to the event in both time and phase. In contrast, the power changes in ERD/ERS are synchronized with the time of the event, but the phase of the oscillations is not necessarily the same across repetitions. A decrease in power relative to the baseline is called ERD, and an increase is called ERS. For this reason, the band-pass signal is first squared and then the power is averaged across repetitions; the square of the mean voltage is not a substitute for this step.

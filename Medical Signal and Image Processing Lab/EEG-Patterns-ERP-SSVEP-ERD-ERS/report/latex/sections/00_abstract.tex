@@ -1,0 +1,21 @@
+\section*{Abstract}
+
+In this experiment, three important patterns of the brain signal were examined: the event-related P300 response, the steady-state visual evoked response (SSVEP), and event-related power changes (ERD/ERS). Synchronous averaging over the 2550 repetitions of channel Pz showed a more stable positive response a few hundred milliseconds after the stimulus. With the defined stability criterion, the selected number of repetitions was 1200. In the SSVEP part, the stimulation frequency of each of the 15 repetitions was selected correctly by comparing the power at the permitted frequencies and also with CCA; nevertheless, in 8 repetitions the highest spectral peak in the search band was near the second harmonic. In the third part, the power of four frequency bands and five mental tasks was analyzed in 30 channels, and different patterns of power change were observed at CPz. These results are descriptive; by themselves they do not determine the generalization accuracy or the statistical significance of the differences between the classes.
+
+\subsection*{Aim and Data of the Experiment}
+
+The aim is to link the type of brain response to the appropriate processing method: voltage averaging for the ERP, examination of the spectrum and its harmonics for the SSVEP, and averaging of band power for ERD/ERS. The data supplied with the lab manual were analyzed; no new data acquisition was performed.
+
+\begin{center}
+\begin{tabular}{@{}lllp{5.4cm}@{}}
+\toprule
+\textbf{Part} & \textbf{Data file} & \textbf{Sampling rate} & \textbf{Dimensions and count}\\
+\midrule
+ERP     & \texttt{ERP\_EEG.mat}      & 240 Hz & $240$ samples $\times$ 2550 repetitions; Pz\\
+SSVEP   & \texttt{SSVEP\_EEG.mat}    & 250 Hz & 6 channels; 15 repetitions of 5 s\\
+ERD/ERS & \texttt{FiveClass\_EEG.mat} & 256 Hz & 30 channels; 200 repetitions; 5 classes\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+The name of the ERP file in the archive is \texttt{ERP\_EEG.mat}. In all slicing operations, MATLAB's one-based indices were converted to Python's zero-based indices. Amplitude calibration is not specified in the data files; amplitudes are therefore reported in the original unit of the data, and powers in the square of that unit.
